@@ -66,23 +66,55 @@ const inventory = [
 ]
 
 //✅ 1. Create hello world using REGULAR functions
-    console.log("Hello World!")
+    function helloWorld(){
+      console.log("Hello World!")
+      return "Hello World!"
+    }
 //✅ 2. For Easley's bookstore, create formatPrice(price)
+    function formatPrice(price){
+      price = price.toFixed(2)
+      return `$${price}`
+    }
 
 //✅ 3. Make an arrow function version of formatPrice
+const arrowFormatPrice = (price) => `$${price.toFixed(2)}`
 
 //✅ 4. WE DO: create a blurb() function that accepts a book as an argument and logs a message in the following format:
 //'Eloquent JavaScript: A Modern Introduction to Programming by Marjin Haverbeke is on sale for $10.00'
+    const blurb = (book) => {
+      //'Eloquent JavaScript: A Modern Introduction to Programming by Marjin Haverbeke is on sale for $10.00'
+      let title = book.title
+      let price = book.price
+      return `${title} is on sale for ${formatPrice(price)}`
+
+    }
+
 
 //✅ 5. Call formatPrice on an array of prices
+    
+    
 
 //✅ 5a. Create an array
+let priceList = [2.3421,435.12332,421.42456,1.5454]
+
+
 
 //✅ 5b. Use a for loop to iterate over prices
-
+/*
+for( let i = 0; i<priceList.length; i++){
+  console.log(formatPrice(priceList[i]))
+}
+*/
 //✅ 5c. Use .forEach to iterate over prices
-
+priceList.forEach(price => {
+  let answer = formatPrice(price)
+  console.log(answer)
+})
 //✅ 5d. Use .map to iterate over prices
+let mapPrice = priceList.map(price => formatPrice(price))
+
+let formatInv =inventory.map(book  => blurb(book) )
+
 
 //✅ 5e. using .map, for each book in inventory, return blurb(book)
 //output: ['Eloquent JavaScript: A Modern Introduction to Programming is on sale for $10.00', ...]
